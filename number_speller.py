@@ -1,6 +1,5 @@
 import math
-
-#10731
+import random
 
 # convert num to a list
 def to_a(num):
@@ -62,9 +61,15 @@ def spell(num):
 
     return " ".join(list_with_name)
 
-print(spell(211000000))
-print(spell(-999999999))
+# testing the results:
+number1 = random.randint(-999999999,999999999)
+number2 = random.randint(-999999999,999999999)
+number3 = random.randint(-999999999,999999999)
+number4 = random.randint(-999999999,999999999)
+number5 = random.randint(-999999999,999999999)
 
+for number in [number1, number2, number3, number4, number5]:
+    print(str(number), 'is', spell(number))
 
 def move(n, a, c, b):
     if n > 0:
