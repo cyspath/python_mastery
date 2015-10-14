@@ -1,3 +1,10 @@
+# Mike Li
+# CS 21A
+
+# In this program, function spell() takes in a int from -999,999,999 to 999,999,999
+# and outputs a string of the number spelled out in English.
+# spell() will uses two helper function to_a() and read_three()
+
 import math
 import random
 
@@ -12,7 +19,8 @@ def to_a(num):
 # read upto three digits in a list
 def read_three(a):
     set_x = ['','one','two','three','four','five', 'six','seven','eight','nine']
-    set_1x = ['','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','ninteen']
+    set_1x = ['','eleven','twelve','thirteen','fourteen','fifteen','sixteen',
+                'seventeen','eighteen','ninteen']
     set_x0 = ['', 1,'twenty','thirty','fourty','fifty','sixty', 'seventy','eighty','ninety']
     result = []
 
@@ -27,7 +35,6 @@ def read_three(a):
         result.append(set_x0[a[1]])
 
     result.append(set_x[a[2]])
-
     return result
 
 
@@ -46,8 +53,6 @@ def spell(num):
             a.insert(0, 0)
             i += 1
 
-    result = []
-
     if len(a) == 3:
         list_with_name = prefix + read_three(a)
     elif len(a) == 6:
@@ -57,28 +62,31 @@ def spell(num):
         for el in a[3:6]:
             if el != 0:
                 thousand = ['thousand']
-        list_with_name = prefix + read_three(a[0:3]) + ['million'] + read_three(a[3:6]) + thousand + read_three(a[6:len(a)])
+        p1 = read_three(a[0:3])
+        p2 = read_three(a[3:6])
+        p3 = read_three(a[6:len(a)])
+        list_with_name = prefix + p1 + ['million'] + p2 + thousand + p3
 
     return " ".join(list_with_name)
 
-# testing the results:
-number1 = random.randint(-999999999,999999999)
-number2 = random.randint(-999999999,999999999)
-number3 = random.randint(-999999999,999999999)
-number4 = random.randint(-999999999,999999999)
-number5 = random.randint(-999999999,999999999)
+#### Now, testing the results with random numbers:
+number1 = random.randint(0, 20)
+number2 = random.randint(-999, 0)
+number3 = random.randint(0,999999)
+number4 = random.randint(-999999,0)
+number5 = random.randint(0,999999999)
+number6 = random.randint(-999999999,0)
 
-for number in [number1, number2, number3, number4, number5]:
+for number in [number1, number2, number3, number4, number5, number6]:
     print(str(number), 'is', spell(number))
 
-def move(n, a, c, b):
-    if n > 0:
-        move(n-1, a, b, c)
-        print('move', n, 'to', c)
-        move(n-1, b, c, a)
 
-
-move(3, 'A', 'B', 'C')
-
-#>>> ================================ RESTART ================================
-#>>>
+# >>> ================================ RESTART ================================
+# >>>
+# 15 is fifteen
+# -875 is negative eight hundred seventy five
+# 738205 is seven hundred thirty eight thousand two hundred  five
+# -122635 is negative one hundred twenty two thousand six hundred thirty five
+# 332453257 is three hundred thirty two million four hundred fifty three thousand two hundred fifty seven
+# -310565933 is negative three hundred  million five hundred sixty five thousand nine hundred thirty three
+# >>>
