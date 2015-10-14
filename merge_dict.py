@@ -13,8 +13,8 @@ a2 = {10:'i', 20:'j', 3:'k', 40:'l'}
 a3 = {100:'s', 200:'t', 3:'u', 400:'v'}
 a4 = { 3: "fourth!"}
 
-# a1-4 result = {400: 'v', 1: 'a', 2: 'b', 3: ['c', 'k', 'u', 'fourth!'],
-#                4: 'd', 100: 's', 40: 'l', 20: 'j', 10: 'i', 200: 't'}
+# expected result {400: 'v', 1: 'a', 2: 'b', 3: ['c', 'k', 'u', 'fourth!'],
+#                  4: 'd', 100: 's', 40: 'l', 20: 'j', 10: 'i', 200: 't'}
 
 
 d1 = {
@@ -43,9 +43,9 @@ d3 = {
     'Bob' : 100
 }
 
-#  d1-3 result = {'Bob': 100, 'Tom': [100, 99], 'Alan': [95, 88, 92],
-#                 'Andrew': [56, 79, 90], 'Mary': [76, 88, 85], 'John': 100,
-#                 'Tricia': [99, 92, 95], 'Colin': [88, 62, 60]}
+#  expected result {'Bob': 100, 'Tom': [100, 99], 'Alan': [95, 88, 92],
+#                   'Andrew': [56, 79, 90], 'Mary': [76, 88, 85], 'John': 100,
+#                   'Tricia': [99, 92, 95], 'Colin': [88, 62, 60]}
 
 
 def merge(alist):
@@ -62,5 +62,20 @@ def merge(alist):
                 combined[key].append(dic[key])
     return combined
 
+# following print commands will print out merged result of
 print(merge([a1, a2, a3, a4]))
 print(merge([d1, d2, d3]))
+
+
+# Output of this module in IDLE.
+'''
+>>> ================================ RESTART ================================
+>>>
+{400: 'v', 1: 'a', 2: 'b', 3: ['c', 'k', 'u', 'fourth!'], 4: 'd', 100: 's',
+40: 'l', 20: 'j', 10: 'i', 200: 't'}
+
+{'Bob': 100, 'Andrew': [56, 79, 90], 'Alan': [95, 88, 92], 'Mary': [76, 88, 85],
+'Colin': [88, 62, 60], 'Tom': [100, 99], 'John': 100, 'Tricia': [99, 92, 95]}
+
+>>>
+'''
